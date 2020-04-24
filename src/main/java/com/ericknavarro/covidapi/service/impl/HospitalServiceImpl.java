@@ -1,4 +1,4 @@
-package com.eriicknavarro.covidapi.service.impl;
+package com.ericknavarro.covidapi.service.impl;
 
 import java.util.Date;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ericknavarro.covidapi.dao.HospitalRepository;
 import com.ericknavarro.covidapi.models.Hospital;
-import com.eriicknavarro.covidapi.service.HospitalService;
+import com.ericknavarro.covidapi.service.HospitalService;
 
 import lombok.AllArgsConstructor;
 

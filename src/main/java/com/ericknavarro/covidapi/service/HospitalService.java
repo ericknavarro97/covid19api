@@ -1,4 +1,4 @@
-package com.eriicknavarro.covidapi.service;
+package com.ericknavarro.covidapi.service;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ericknavarro.covidapi.models.Hospital;
-import com.eriicknavarro.covidapi.service.HospitalService;
+import com.ericknavarro.covidapi.service.HospitalService;
 
 import lombok.AllArgsConstructor;
 
