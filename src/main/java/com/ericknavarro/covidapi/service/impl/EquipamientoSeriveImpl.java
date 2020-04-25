@@ -1,5 +1,6 @@
 package com.ericknavarro.covidapi.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -25,12 +26,13 @@ public class EquipamientoSeriveImpl implements EquipamientoService {
 	@Override
 	public Equipamiento findEquipamientoById(Integer equipamientoId) {
 		// TODO Auto-generated method stub
-		return repository.getOne(equipamientoId);
+		return repository.findById(equipamientoId).get();
 	}
 
 	@Override
 	public Equipamiento saveEquipamiento(Equipamiento equipamiento) {
 		// TODO Auto-generated method stub
+		equipamiento.setFechaCreacion(new Date());
 		return repository.save(equipamiento);
 	}
 
