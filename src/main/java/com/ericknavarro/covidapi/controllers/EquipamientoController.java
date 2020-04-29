@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ericknavarro.covidapi.models.Equipamiento;
+import com.ericknavarro.covidapi.models.Hospital;
 import com.ericknavarro.covidapi.service.EquipamientoService;
 
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("${api.version}/equipamientos")
+@RequestMapping("/${api.version}/equipamientos")
 @AllArgsConstructor
 public class EquipamientoController {
 
@@ -35,8 +36,13 @@ public class EquipamientoController {
 		return new ResponseEntity<>(service.findEquipamientoById(equipamientoId), HttpStatus.OK);
 	}
 	
+	@PostMapping("/{id}/hospitales")
+	public ResponseEntity<Equipamiento> addHospitalToEquipamiento(@PathVariable("id") Integer equipamientoId, @RequestBody Hospital hospital){
+		return new ResponseEntity<Equipamiento>(service.addHospitalToEquipamiento(equipamientoId, hospital.getHospitalId()), HttpStatus.OK);
+	}
+	
 	@PostMapping
-	public ResponseEntity<Equipamiento> savesaveEquipamientoHospital(@RequestBody Equipamiento equipamiento) {
+	public ResponseEntity<Equipamiento> saveEquipamiento(@RequestBody Equipamiento equipamiento) {
 		return new ResponseEntity<>(service.saveEquipamiento(equipamiento), HttpStatus.CREATED);
 	}
 	

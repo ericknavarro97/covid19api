@@ -2,6 +2,7 @@ package com.ericknavarro.covidapi.models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,14 @@ public class Equipamiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer equipamientoId;
+	//Hospital foreign Key
+	@Column(nullable = true)
+	private Integer hospitalId;
 	private String nombre;
 	private String descripcion;
 	private Integer cantidad;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date fechaVencimiento;
 	
 	@Temporal(TemporalType.TIMESTAMP)

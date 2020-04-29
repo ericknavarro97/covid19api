@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ericknavarro.covidapi.models.Equipamiento;
 import com.ericknavarro.covidapi.models.Hospital;
 import com.ericknavarro.covidapi.service.HospitalService;
 
@@ -50,6 +51,10 @@ public class HospitalController {
 	public ResponseEntity<Void> deleteHospital(@PathVariable("id") Integer id) {
 		service.deleteHospitalById(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
+	@GetMapping("/{id}/equipamientos")
+	public ResponseEntity<List<Equipamiento>> findAllEquipamientoHospitalById(@PathVariable("id") Integer hospitalId){
+		return new ResponseEntity<List<Equipamiento>>(service.findHospitalById(hospitalId).getEquipamientos(), HttpStatus.OK);
 	}
 	
 	

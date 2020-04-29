@@ -55,7 +55,18 @@ public class EquipamientoSeriveImpl implements EquipamientoService {
 	@Override
 	public void deleteEquipamiento(Integer equipamientoId) {
 		// TODO Auto-generated method stub
+		repository.deleteById(equipamientoId);
 		
+	}
+
+	@Override
+	public Equipamiento addHospitalToEquipamiento(Integer equipamientoId, Integer hospitalId) {
+		// TODO Auto-generated method stub
+		
+		Equipamiento equipamiento = findEquipamientoById(equipamientoId);
+		equipamiento.setHospitalId(hospitalId);
+		
+		return repository.save(equipamiento);
 	}
 
 }
