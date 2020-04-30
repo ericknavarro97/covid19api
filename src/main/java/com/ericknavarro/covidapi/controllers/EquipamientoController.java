@@ -41,6 +41,7 @@ public class EquipamientoController {
 		return new ResponseEntity<Equipamiento>(service.addHospitalToEquipamiento(equipamientoId, hospital.getHospitalId()), HttpStatus.OK);
 	}
 	
+	
 	@PostMapping
 	public ResponseEntity<Equipamiento> saveEquipamiento(@RequestBody Equipamiento equipamiento) {
 		return new ResponseEntity<>(service.saveEquipamiento(equipamiento), HttpStatus.CREATED);
