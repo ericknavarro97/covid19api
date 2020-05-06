@@ -46,7 +46,6 @@ public class HospitalController {
 		return new ResponseEntity<>(service.updateHospital(id, hospital), HttpStatus.OK);
 	}
 	
-	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteHospital(@PathVariable("id") Integer id) {
 		service.deleteHospitalById(id);

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,5 +40,8 @@ public class Hospital {
 	//				id de este entity       nombre del foreign key de equipamiento
 	@JoinColumn(name = "hospitalId", referencedColumnName = "hospitalId")
 	private List<Equipamiento> equipamientos;
+	
+	@ManyToMany(mappedBy = "hospitales")
+	private List<Enlace> enlaces;
 	
 }
