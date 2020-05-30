@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ericknavarro.covidapi.dao.HospitalRepository;
+import com.ericknavarro.covidapi.error.HospitalNotFoundException;
 import com.ericknavarro.covidapi.models.Hospital;
 import com.ericknavarro.covidapi.service.HospitalService;
+import java.util.Optional;
 
 import lombok.AllArgsConstructor;
 
@@ -24,8 +26,8 @@ public class HospitalServiceImpl implements HospitalService {
 	}
 	
 	@Override
-	public Hospital findHospitalById(Integer hospitalId) {
-		return repository.findById(hospitalId).get();
+	public Optional<Hospital> findHospitalById(Integer hospitalId) {
+		return repository.findById(hospitalId);
 	}
 	
 	@Override
@@ -36,7 +38,7 @@ public class HospitalServiceImpl implements HospitalService {
 	
 	@Override
 	public Hospital updateHospital(Integer hospitalId, Hospital hospital) {
-		Hospital hospitalDB = findHospitalById(hospitalId);
+		Hospital hospitalDB = findHospitalById(hospitalId).get();
 		hospitalDB.setNombre(hospital.getNombre());
 		hospitalDB.setLatitud(hospital.getLatitud());
 		hospitalDB.setLongitud(hospital.getLongitud());

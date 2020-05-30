@@ -1,5 +1,6 @@
 package com.ericknavarro.covidapi.config;
 
+import com.ericknavarro.covidapi.error.UnauthorizedException;
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -47,7 +48,7 @@ public class JwtFilter extends GenericFilterBean{
 				httpRequest.setAttribute("claims", claims);
 				
 			} catch (SignatureException e) {
-				throw new ServletException("Invalid toke, Exeption: " + e.getMessage());
+				throw new UnauthorizedException();
 			}
 			
 		} else {

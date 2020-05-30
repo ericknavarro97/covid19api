@@ -1,5 +1,6 @@
 package com.ericknavarro.covidapi.controllers;
 
+import com.ericknavarro.covidapi.error.HospitalNotFoundException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class HospitalController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Hospital> findAllHospitalById(@PathVariable("id") Integer id) {
-		return new ResponseEntity<>(service.findHospitalById(id), HttpStatus.OK);
+	public ResponseEntity<Hospital> findAllHospitalById(@PathVariable("id") Integer hospitalId) {
+		return new ResponseEntity<>(service.findHospitalById(hospitalId).orElseThrow(() -> new HospitalNotFoundException(hospitalId)), HttpStatus.OK);
 	}
 	
 	@PostMapping
@@ -53,7 +54,8 @@ public class HospitalController {
 	}
 	@GetMapping("/{id}/equipamientos")
 	public ResponseEntity<List<Equipamiento>> findAllEquipamientoHospitalById(@PathVariable("id") Integer hospitalId){
-		return new ResponseEntity<List<Equipamiento>>(service.findHospitalById(hospitalId).getEquipamientos(), HttpStatus.OK);
+		return new ResponseEntity<List<Equipamiento>>(service.findHospitalById(hospitalId)
+                        .orElseThrow(() -> new HospitalNotFoundException(hospitalId)).getEquipamientos(), HttpStatus.OK);
 	}
 	
 	
